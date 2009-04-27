@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  joined: 2009-04-19
+  leaved: 2009-04-19
+  user: 
+  project: 
+
+two:
+  joined: 2009-04-19
+  leaved: 2009-04-19
+  user: 
+  project: 

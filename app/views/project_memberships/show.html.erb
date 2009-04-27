@@ -1,0 +1,23 @@
+<p>
+  <b>Joined:</b>
+  <%=h @project_membership.joined %>
+</p>
+
+<p>
+  <b>Leaved:</b>
+  <%=h @project_membership.leaved %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @project_membership.user %>
+</p>
+
+<p>
+  <b>Project:</b>
+  <%=h @project_membership.project %>
+</p>
+
+
+<%= link_to 'Edit', edit_project_membership_path(@project_membership) %> |
+<%= link_to 'Back', project_memberships_path %>

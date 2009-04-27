@@ -1,0 +1,7 @@
+<% form_tag :controller => :sessions, :action => :create do %>
+  <p><label for = "login">Nome de usuário ou e-mail</label><br/>
+  <%= text_field_tag 'login' %></p>
+  <p><label for = "password">Senha</label><br/>
+  <%= password_field_tag 'password' %></p>
+  <p><%= submit_tag 'Log On' %></p>
+<% end %>

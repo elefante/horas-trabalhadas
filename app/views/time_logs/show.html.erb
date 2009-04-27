@@ -1,0 +1,28 @@
+<p>
+  <b>User:</b>
+  <%=h @time_log.user %>
+</p>
+
+<p>
+  <b>Task type:</b>
+  <%=h @time_log.task_type %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @time_log.description %>
+</p>
+
+<p>
+  <b>Task date:</b>
+  <%=h @time_log.task_date %>
+</p>
+
+<p>
+  <b>Worked hours:</b>
+  <%=h @time_log.worked_hours %>
+</p>
+
+
+<%= link_to 'Edit', edit_time_log_path(@time_log) %> |
+<%= link_to 'Back', time_logs_path %>

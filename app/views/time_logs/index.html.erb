@@ -1,0 +1,28 @@
+<h1>Listing time_logs</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Task type</th>
+    <th>Description</th>
+    <th>Task date</th>
+    <th>Worked hours</th>
+  </tr>
+
+<% @time_logs.each do |time_log| %>
+  <tr>
+    <td><%=h time_log.user %></td>
+    <td><%=h time_log.task_type %></td>
+    <td><%=h time_log.description %></td>
+    <td><%=h time_log.task_date %></td>
+    <td><%=h time_log.worked_hours %></td>
+    <td><%= link_to 'Show', time_log %></td>
+    <td><%= link_to 'Edit', edit_time_log_path(time_log) %></td>
+    <td><%= link_to 'Destroy', time_log, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New time_log', new_time_log_path %>

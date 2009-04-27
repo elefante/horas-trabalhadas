@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>Controle de horas trabalhadas</title>
+    <%= stylesheet_link_tag 'scaffold' %>
+    <%= javascript_include_tag :defaults %>
+  </head>
+  <body>
+    <% if flash[:notice] %>
+    <p style="color: green"><%= flash[:notice] %></p>
+    <% end %>
+    <div id = "projects">
+      <h2>Administração</h2>
+      <ul>
+        <li><%= link_to "Usuarios", users_path %></li>
+        <li><%= link_to "Projetos", projects_path %></li>
+        <li><%= link_to "Registrar Horas", new_user_time_log_path(@current_user) %></li>
+        <li><%= link_to "Sair do Sistema", sessions_path, :metod => :delete %></li>
+    </div>
+    <div id = "contents">
+      <%= yield %>
+    </div>
+  </body>
+</html>
