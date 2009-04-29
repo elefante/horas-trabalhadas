@@ -1,13 +1,24 @@
-<p>
-  <b>Name:</b>
-  <%=h @project.name %>
-</p>
+<h1><%=h @project.name %></h1>
 
 <p>
-  <b>Description:</b>
-  <%=h @project.description %>
+  <%=h(@project.description).gsub("\n","<br/>" if @project.description %>
 </p>
 
+<h2>Usuários Associados</h2>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<ul>
+<% @project.users.each do |user| %>
+  <li><%= link_to user.name, user %></li>
+<% end %>
+  <li><%= link_to_unless @project.users.include?(@current_user), 'Associar-se', new_project_project_membership_path(@project) %></li>
+</ul>
+
+<h2>Tipos de Tarefas</h2>
+
+<ul>
+<% @project.task_types.each do |task_type| %>
+  <li><%= link_to task_type.name, edit_project_task_type_path(@project.task_type) %></li>
+<% end %>
+  <li><%= link_to_if @project.users.include?(@current_user), 'Novo Tipo de Tarefa', new_project_task_type_path(@projetc) %></li>
+</ul>
+<%= link_to 'Editar', edit_project_path(@project) %>

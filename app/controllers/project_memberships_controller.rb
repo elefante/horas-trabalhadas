@@ -25,6 +25,9 @@ class ProjectMembershipsController < ApplicationController
   # GET /project_memberships/new.xml
   def new
     @project_membership = ProjectMembership.new
+    @project_membership.project = Project.find(params[:project_id])
+    @project_membership.user = @current_user
+    @project_membership.joined = Date.today
 
     respond_to do |format|
       format.html # new.html.erb
@@ -45,7 +48,7 @@ class ProjectMembershipsController < ApplicationController
     respond_to do |format|
       if @project_membership.save
         flash[:notice] = 'ProjectMembership was successfully created.'
-        format.html { redirect_to(@project_membership) }
+        format.html { redirect_to(@project_project_membership_path(@project_membership_path.project, @project_membership)) }
         format.xml  { render :xml => @project_membership, :status => :created, :location => @project_membership }
       else
         format.html { render :action => "new" }

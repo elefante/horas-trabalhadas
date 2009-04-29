@@ -1,30 +1,10 @@
 class TaskTypesController < ApplicationController
-  # GET /task_types
-  # GET /task_types.xml
-  def index
-    @task_types = TaskType.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @task_types }
-    end
-  end
 
   # GET /task_types/1
   # GET /task_types/1.xml
-  def show
-    @task_type = TaskType.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @task_type }
-    end
-  end
-
-  # GET /task_types/new
-  # GET /task_types/new.xml
   def new
     @task_type = TaskType.new
+    @task_type.projetc = Project.find(params[:project_ide])
 
     respond_to do |format|
       format.html # new.html.erb

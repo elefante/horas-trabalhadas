@@ -1,27 +1,38 @@
-<h1>New project_membership</h1>
+<h1>Nova associação a um projeto</h1>
 
 <% form_for(@project_membership) do |f| %>
+  <%= f.hidden_field :project_id %>
+  <%= f.hidden_field :user_id %>
+  <%= f.hidden_field :joined %>
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :joined %><br />
-    <%= f.date_select :joined %>
+    Projeto: <%= h @project_membership.project.name %>
   </p>
   <p>
-    <%= f.label :leaved %><br />
-    <%= f.date_select :leaved %>
+    <%= h @project_membership.joined %>
   </p>
   <p>
-    <%= f.label :user %><br />
-    <%= f.text_field :user %>
-  </p>
-  <p>
-    <%= f.label :project %><br />
-    <%= f.text_field :project %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
+    <%= f.submit "Confirmar associação a projeto" %>
   </p>
 <% end %>
 
-<%= link_to 'Back', project_memberships_path %>
+<h1>Todos os Projetos</h1>
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Descrição</th>
+  </tr>
+<% for project in @projects %>
+  <tr>
+    <td><%=h project.name %></td>
+    <td><%=h project.description %></td>
+    <td><%= link_to 'Detalhes', project %></td>
+    <td><%= link_to 'Editar', edit_project_path(project) %></td>
+    <td><%= link_to 'Apagar', project, :confirm => 'Você tem certeza?', :method => :delete %></td>
+    <td><%= link_to 'Associar-se', new_project_project_membership_path(project) %>
+  </tr>
+<% end %>
+</table>
+<br />
+<%= link_to 'Novo Projeto', new_projetc_path %>

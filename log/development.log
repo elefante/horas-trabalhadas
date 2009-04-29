@@ -2911,3 +2911,15 @@ Rendering template within layouts/application
 Rendering projects/index
   [4;35;1mProject Load (0.6ms)[0m   [0mSELECT "projects".* FROM "projects" INNER JOIN "project_memberships" ON "projects".id = "project_memberships".project_id WHERE (("project_memberships".user_id = 2) AND ((leaved is null))) [0m
 Completed in 66ms (View: 26, DB: 2) | 200 OK [http://localhost/projects]
+
+
+Processing ProjectsController#index (for 127.0.0.1 at 2009-04-28 06:20:18) [GET]
+Redirected to http://localhost:3000/sessions/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 24ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-04-28 06:20:18) [GET]
+Rendering template within layouts/sessions
+Rendering sessions/new
+Completed in 65ms (View: 58, DB: 0) | 200 OK [http://localhost/sessions/new]
