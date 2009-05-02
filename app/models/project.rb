@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  has_many :tast_types
+  has_many :task_types
   has_many :project_memberships, :conditions => "leaved is null"
   has_many :users, :through => :project_memberships
   has_many :time_logs, :through => :task_types

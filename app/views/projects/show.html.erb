@@ -1,7 +1,7 @@
 <h1><%=h @project.name %></h1>
 
 <p>
-  <%=h(@project.description).gsub("\n","<br/>" if @project.description %>
+  <%=h(@project.description).gsub("\n","<br/>") if @project.description %>
 </p>
 
 <h2>Usuários Associados</h2>
@@ -19,6 +19,6 @@
 <% @project.task_types.each do |task_type| %>
   <li><%= link_to task_type.name, edit_project_task_type_path(@project.task_type) %></li>
 <% end %>
-  <li><%= link_to_if @project.users.include?(@current_user), 'Novo Tipo de Tarefa', new_project_task_type_path(@projetc) %></li>
+  <li><%= link_to_if @project.users.include?(@current_user), 'Novo Tipo de Tarefa', new_project_task_type_path(@project) %></li>
 </ul>
 <%= link_to 'Editar', edit_project_path(@project) %>

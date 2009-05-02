@@ -1,22 +1,22 @@
-<h1>Listing projects</h1>
+<h1>Lista de Projetos</h1>
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Description</th>
+    <th>Nome</th>
+    <th>Descrição</th>
   </tr>
 
 <% @projects.each do |project| %>
   <tr>
     <td><%=h project.name %></td>
     <td><%=h project.description %></td>
-    <td><%= link_to 'Show', project %></td>
-    <td><%= link_to 'Edit', edit_project_path(project) %></td>
-    <td><%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Mostrar', project %></td>
+    <td><%= link_to 'Editar', edit_project_path(project) %></td>
+    <td><%= link_to 'Remover', project, :confirm => 'Você tem certeza?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New project', new_project_path %>
+<%= link_to 'Novo projeto', new_project_path %>
