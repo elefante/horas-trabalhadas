@@ -1,4 +1,6 @@
 *.swp
 *.log
+*~
 db/schema.rb
 db/schema.sql
+*.sqlite3

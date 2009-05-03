@@ -4,7 +4,7 @@ class TaskTypesController < ApplicationController
   # GET /task_types/1.xml
   def new
     @task_type = TaskType.new
-    @task_type.project = Project.find(params[:project_ide])
+    @task_type.project = Project.find(params[:project_id])
 
     respond_to do |format|
       format.html # new.html.erb

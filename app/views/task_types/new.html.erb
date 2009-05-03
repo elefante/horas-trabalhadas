@@ -1,19 +1,6 @@
-<h1>New task_type</h1>
-
-<% form_for(@task_type) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :project %><br />
-    <%= f.text_field :project %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
+<h1>Criando uma tarefa</h1>
+<% form_for([:project, @task_type]) do |f| %> 
+  <%= render :partial => 'form', :locals => {:f => f} %>
+  <p><%= f.submit "Criar" %></p>
 <% end %>
-
-<%= link_to 'Back', task_types_path %>
+<%= link_to 'Voltar', @task_type.project %> 

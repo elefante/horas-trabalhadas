@@ -17,7 +17,7 @@
 
 <ul>
 <% @project.task_types.each do |task_type| %>
-  <li><%= link_to task_type.name, edit_project_task_type_path(@project.task_type) %></li>
+  <li><%= link_to task_type.name, edit_project_task_type_path(@project, task_type) %></li>
 <% end %>
   <li><%= link_to_if @project.users.include?(@current_user), 'Novo Tipo de Tarefa', new_project_task_type_path(@project) %></li>
 </ul>
