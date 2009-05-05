@@ -1,6 +1,9 @@
 <h1>Editando a Tarefa </h1>
 <% form_for([:project, @task_type]) do |f| %> 
-  <%= render :partial => 'form', :locals => {:f => f} %>
+  <%= f.hidden_field :project_id %>
+  <%= f.error_messages %>
+  <p>Projeto: <%= @task_type.project.name %></p>
+  <p><%= f.label :name, "Nome" %>: <%= f.text_field :name %></p>
   <p><%= f.submit "Atualizar" %></p>
 <% end %>
 <%= link_to 'Voltar', @task_type.project %> 
