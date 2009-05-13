@@ -1,5 +1,5 @@
 <h1>Editando a Tarefa </h1>
-<% form_for([:project, @task_type]) do |f| %> 
+<% form_for([@task_type.project, @task_type]) do |f| %> 
   <%= f.hidden_field :project_id %>
   <%= f.error_messages %>
   <p>Projeto: <%= @task_type.project.name %></p>
