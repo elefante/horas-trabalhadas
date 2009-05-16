@@ -1,5 +1,13 @@
 class TaskTypesController < ApplicationController
 
+  # Method for populate tasks on /views/time_logs/_form.html.erb using AJAX
+  def index
+    @task_types = TaskType.find_all_by_project_id params[:project_id]
+    respond_to do |format|
+      format.js { render :layout => false, :inline => "<option></option><%= options_from_collection_for_select @task_types, :id, :name, params[:project_id] %>" }
+    end
+  end
+
   # GET /task_types/1
   # GET /task_types/1.xml
   def new
