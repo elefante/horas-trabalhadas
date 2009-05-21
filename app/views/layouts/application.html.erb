@@ -18,7 +18,8 @@
         <li><%= link_to "Usuarios", users_path %></li>
         <li><%= link_to "Projetos", projects_path %></li>
         <li><%= link_to "Registrar Horas", new_user_time_log_path(@current_user) %></li>
-        <li><%= link_to "Sair do Sistema", sessions_path, :metod => :delete %></li>
+        <li><%= link_to "Sair do Sistema", sessions_path, :method => :delete %></li>
+        <li><%= link_to "Relatório", new_summary_report_path %></li>
       </ul>
       <h2>Meus Projetos</h2>
       <ul>

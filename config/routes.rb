@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :summary_reports
+
   map.resources :sessions
   map.resources :users do |usr|
     usr.resources :time_logs

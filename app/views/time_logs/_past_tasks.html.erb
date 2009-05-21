@@ -1,0 +1,18 @@
+<table width = "100%">
+  <tr>
+    <th>Data</th>
+    <th>Tempo</th>
+    <th>Projeto</th>
+    <th>Tarefa</th>
+  </tr>
+  <% @time_logs.each do |tl| %>
+  <tr>
+    <td><%= tl.task_date %></td>
+    <td><%= tl.worked_hours %></td>
+    <td><%= tl.task_type.project.name %></td>
+    <td><%= tl.task_type.name %></td>
+    <td><%= link_to "Editar", edit_user_time_log_path(@current_user, tl) %></td>
+    <td><%= link_to "Remover", user_time_log_path(@current_user, tl), :method => :delete %></td>
+  </tr>
+  <% end %>
+</table>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  project: 
+  task_type: 
+  user: 
+
+two:
+  project: 
+  task_type: 
+  user: 

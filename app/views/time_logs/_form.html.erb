@@ -1,0 +1,30 @@
+<% form_for([@current_user, @time_log]) do |f| %>
+  <%= f.hidden_field :user_id %>
+  <%= f.error_messages %>
+  <p>Usuário: <%= @time_log.user.name %></p>
+  <p>
+    <%= f.label :project_id, "Projeto" %>: <select name = "project_id" id = "project_id"><option value = ""></option>
+    <%= options_from_collection_for_select(@projects, "id", "name", params[:project_id]?params[:project_id].to_i : nil) %></select>
+
+    <%= observe_field :project_id, :url => {:controller => "task_types", :action => "index" },
+        :frequency => 0.25,
+        :update => :time_log_task_type_id,
+        :with => 'project_id' %>
+  </p>
+  <p>
+    <%= f.label :task_type_id, "Tipo de tarefa" %>: <%= select :time_log, :task_type_id, @task_types.collect{|tt| [tt.name, tt.id]} %>
+  </p>
+  <p>
+    <%= f.label :task_date, "Data" %>: <%= f.date_select :task_date %>
+  </p>
+  <p>
+    <%= f.label :worked_hours, "Horas Trabalhadas" %>: <%= f.time_select :worked_hours %>
+  </p>
+  <p>
+    <%= f.label :description, "Descrição" %>:<br/>
+    <%= f.text_area :description, :cols => 60, :rows => 5 %>
+  </p>
+  <p>
+    <%= f.submit button_label %> || <%= link_to "Novo Registro", new_user_time_log_path(@current_user) %>
+  </p>
+<% end %>

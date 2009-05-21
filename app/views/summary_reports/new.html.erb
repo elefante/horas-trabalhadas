@@ -1,0 +1,26 @@
+<h1>Novo Relatório</h1>
+
+<% form_for(@summary_report) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :project_id, "Projeto" %><br />
+    <%= f.select :project_id, @projects.collect{|proj| [proj.name, proj.id] }, :include_blank => true %>
+  </p>
+    <%= observe_field :project_id, :url => {:controller => "task_types", :action => "index"},
+        :frequency => 0.25,
+        :update => :summary_report_task_type_id,
+        :with => 'project_id' %>
+  <p>
+    <%= f.label :task_type_id, "Tipo de Tarefa" %><br />
+    <%= f.select :task_type_id, [], :include_blank => true %>
+  </p>
+  <p>
+    <%= f.label :user_id, "Usuário" %><br />
+    <%= f.select :user_id, @users.collect{|usr| [usr.name, usr.id] },
+        :include_blank => true %>
+  </p>
+  <p>
+    <%= f.submit 'Buscar' %>
+  </p>
+<% end %>

@@ -1,6 +1,6 @@
 class TaskTypesController < ApplicationController
 
-  # Method for populate tasks on /views/time_logs/_form.html.erb using AJAX
+  # Method to populate tasks on /views/time_logs/_form.html.erb using AJAX
   def index
     @task_types = TaskType.find_all_by_project_id params[:project_id]
     respond_to do |format|
