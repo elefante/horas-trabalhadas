@@ -1,18 +1,22 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :summary_reports
-
-  map.resources :sessions
-  map.resources :users do |usr|
-    usr.resources :time_logs
-    usr.resources :project_memberships
+  map.resources :summary_reports, :as => "relatorio_simples",
+      :path_names => {:new => "novo", :show => "visualizar"}
+  map.resources :sessions, :as => "sessao",
+      :path_names => {:new => "nova"}
+  map.resources :users, :as => "usuarios",
+      :path_names => {:new => "novo", :show => "ver"} do |usr|
+    usr.resources :time_logs, :as => "registro_de_horas",
+      :path_names => {:new => "novo", :show => "ver"}
   end
 
-  map.resources :projects do |proj|
-    proj.resources :task_types do |tt|
-      tt.resources :time_logs
-    end
-    proj.resources :project_memberships
+  map.resources :projects, :as => "projetos",
+      :path_names => {:new => "novo", :edit => "ver"} do |proj|
+    proj.resources :task_types, :as => "tipos_de_tarefa",
+        :path_names => {:new => "novo", :edit => "ver"}
+    proj.resources :project_membershps, :as => "associacao",
+        :path_names => {:new => "nova", :edit => "ver"}
   end
+  
   map.root :controller => "projects"
 
   # The priority is based upon order of creation: first created -> highest priority.
