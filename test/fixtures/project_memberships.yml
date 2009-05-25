@@ -1,13 +1,13 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+  <% (1..5).each do |v| %>
+  p1usr<%= v %>:
+    joined: <%= Date.today %>
+    user_id: <%= v %>
+    project: 1
+  <% end %>
 
-one:
-  joined: 2009-04-19
-  leaved: 2009-04-19
-  user: 
-  project: 
-
-two:
-  joined: 2009-04-19
-  leaved: 2009-04-19
-  user: 
-  project: 
+  <% (6..10).each do |v| %>
+  p2usr<%= v %>:
+    joined: <%= Date.today %>
+    user_id: <%= v %>
+    project: 2
+  <% end %>
