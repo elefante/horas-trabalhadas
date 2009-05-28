@@ -4,12 +4,15 @@ require 'user'
 class UserTest < ActiveSupport::TestCase
 
   def test_required
+=begin
     u = User.new
     u.save
     assert u.errors[:name]
     assert u.errors[:login]
     assert u.errors[:password]
     assert u.errors[:email]
+=end
+    assert_required_values(User, :login => 'estenome', :password => 'estenome', :email => 'estenome@domain.com')
   end
 
   def test_length

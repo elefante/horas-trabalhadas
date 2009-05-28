@@ -3,32 +3,14 @@ require 'project'
 
 class ProjectTest < ActiveSupport::TestCase
   def test_presence
-    p = Project.new
-    assert !p.valid?
-    assert p.errors.invalid?(:name)
-    p.name = 'testsaved'
-    assert p.valid?
-    assert !p.errors.invalid?(:name)
+    assert_required_values Project, :name => 'testsaved'
   end
 
   def test_uniqueness
-    p = Project.new(:name => 'Projeto de Testes')
-    assert !p.valid?
-    assert p.errors.invalid?(:name)
-    p.name = 'Projeto de Testes2'
-    assert p.valid?
-    assert !p.errors.invalid?(:name)
-  end
+    assert_unique_values Project, {:name => 'Projeto de Testes'}, {:name => 'Projeto de Testes 2'}, [:name]
+  end 
 
   def test_length
-    p= Project.new(:name => 'a')
-    assert !p.valid?
-    assert p.errors.invalid?(:name)
-    p.name = 'a' * 55
-    assert !p.valid?
-    assert p.errors.invalid?(:name)
-    p.name = 'a' * 45
-    assert p.valid?
-    assert !p.errors.invalid?(:name)
+   assert_valid_sizes Project, {:name => "a"}, {:name => "a" * 55}, {:name => "a" * 35} 
   end 
 end 
