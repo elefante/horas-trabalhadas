@@ -28,4 +28,15 @@ class UserTest < ActiveSupport::TestCase
     assert_unique_values User, {:login => "user1", :email => "user1@domain1.com"}, {:login => "2user1",
         :email => "2user1@domain1.com"}, {:name, :email}
   end
+
+  def test_logon
+    assert !User.logon("asda", "asda")
+        "Um login com usuário e senha inválidos não deve funcionar"
+    assert !User.logon("user1", "asda")
+        "Um login com usuário válido e senha inválidas não deve funcionar"
+    assert User.logon("user1", "user1")
+        "Um login com usuário e senha válidos deve funcionar"
+    assert User.logon("user1@domain1.com", "user1")
+        "Um login com email e senha válidos deve funcionar"
+  end
 end
