@@ -7,8 +7,8 @@ class TaskTypeTest < ActiveSupport::TestCase
   end
 
   def test_uniqueness
-    assert_unique_values(TaskType, {:name => 'Escrita do código de negócio',
-        :project_id => 1}, {:project_id => 2}, [:name])
+    assert_unique_values TaskType, {:name => 'Escrever o código de negócio', :project_id => 1},
+        {:project_id => 2}, [:name]
   end
 
   def test_length

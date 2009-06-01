@@ -39,7 +39,7 @@ class ActiveSupport::TestCase
   def assert_valid_sizes(model_class, small_values, big_values, ok_values)
     obj = model_class.new
     small_values.each do |name, value|
-      obj.[]=(name, value)
+      obj[name] = value
     end
     assert !obj.valid?, "O modelo #{model_class.name} não devia estar válido agora,
         pois foi preenchido com valores muito pequenos"
@@ -48,16 +48,16 @@ class ActiveSupport::TestCase
           não deveria ser válido agora, pois foi preenchido com um valor muito pequeno"
     end
     big_values.each do |name, value|
-      obj.[]=(name, value)
+      obj[name] = value
     end
     assert !obj.valid?, "O modelo #{model_class.name} não devia estar válido agora,
         pois foi preenchido com valores muito grandes"
     big_values.each do |name, value|
-      assert obj.errors.invalid?(name), "O aributo #{name} do modelo #{model_class}
+      assert obj.errors.invalid?(name), "O atributo #{name} do modelo #{model_class}
           não deveria ser válido agora, pois foi preenchido com um valor muito grande"
     end
     ok_values.each do |name, value|
-      obj.[]=(name, value)
+      obj[name] = value
     end
     obj.valid?
     ok_values.each do |name, value|
@@ -69,20 +69,18 @@ class ActiveSupport::TestCase
   def assert_unique_values(model_class, invalid_values, valid_values, fields_to_validate)
     obj = model_class.new
     invalid_values.each do |name, value|
-      obj.[]=(name, value)
+      obj[name] = value
     end
     assert !obj.valid?, "O modelo #{model_class.name} deveria estar inválido agora"
     fields_to_validate.each do |name|
-      assert obj.errors.invalid?(name), "O atributo #{name} do modelo
-          #{model_class.name} deveria validar se é único, mas não validou"
+      assert obj.errors.invalid?(name), "O atributo #{name} do modelo #{model_class.name} deveria validar se é único, mas não validou"
     end
     valid_values.each do |name, value|
-      obj.[]=(name, value)
+      obj[name] = value
     end
     obj.valid?
     fields_to_validate.each do |name|
-      assert !obj.errors.invalid?(name), "O atributo #{name} do modelo
-          #{model_class.name} deveria passar na validação agora, mas não passou"
+      assert !obj.errors.invalid?(name), "O atributo #{name} do modelo #{model_class.name} deveria passar na validação agora, mas não passou"
     end
   end
 
@@ -98,7 +96,7 @@ class ActiveSupport::TestCase
     end
     # atribuir valores válidos
     valid_values.each do |attr_name, attr_value|
-      obj.[]=(attr_name, attr_value)
+      obj[attr_name] = attr_value
     end
     # verificar se os erros desapareceram
     obj.valid?
